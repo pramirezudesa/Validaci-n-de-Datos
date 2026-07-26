@@ -135,3 +135,104 @@ def validar_rango(x: float, minimo: float, maximo: float) -> bool:
         return minimo <= x <= maximo
     except (ValueError, TypeError):
         return False
+def validar_flotante_positivo(x: float) -> bool:
+    """
+    Evalúa si un número decimal o entero es mayor a cero.
+    
+    Argumentos:
+        x (float): El número a verificar.
+    Retorna:
+        bool: True si x > 0, False en caso contrario.
+    """
+    try:
+        return x > 0
+    except (ValueError, TypeError):
+        return False
+
+def validar_entero_no_negativo(x: int) -> bool:
+    """
+    Determina si un número entero es cero o positivo.
+    
+    Argumentos:
+        x (int): El número entero a evaluar.
+    Retorna:
+        bool: True si x es mayor o igual a 0.
+    """
+    try:
+        return isinstance(x, int) and x >= 0
+    except (ValueError, TypeError):
+        return False
+
+def validar_email(email: str) -> bool:
+    """
+    Verifica de forma básica si una cadena tiene la estructura de un correo electrónico.
+    
+    Argumentos:
+        email (str): La cadena a evaluar.
+    Retorna:
+        bool: True si contiene '@' y al menos un punto después del '@'.
+    """
+    try:
+        email_limpio = email.strip()
+        return '@' in email_limpio and email_limpio.index('@') < email_limpio.rindex('.')
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+def validar_longitud_exacta(s: str, longitud: int) -> bool:
+    """
+    Comprueba si una cadena de texto tiene una longitud exacta.
+    
+    Argumentos:
+        s (str): La cadena a verificar.
+        longitud (int): El número de caracteres esperado.
+    Retorna:
+        bool: True si la longitud coincide.
+    """
+    try:
+        return len(str(s)) == longitud
+    except (ValueError, TypeError):
+        return False
+
+def validar_longitud_maxima(s: str, max_longitud: int) -> bool:
+    """
+    Comprueba si una cadena de texto no supera un límite máximo de caracteres.
+    
+    Argumentos:
+        s (str): La cadena a verificar.
+        max_longitud (int): El límite máximo de caracteres permitidos.
+    Retorna:
+        bool: True si la longitud es menor o igual al máximo.
+    """
+    try:
+        return len(str(s)) <= max_longitud
+    except (ValueError, TypeError):
+        return False
+
+def validar_lista_no_vacia(lista: list) -> bool:
+    """
+    Verifica que una lista contenga elementos.
+    
+    Argumentos:
+        lista (list): La lista a evaluar.
+    Retorna:
+        bool: True si la lista tiene al menos un elemento.
+    """
+    try:
+        return isinstance(lista, list) and len(lista) > 0
+    except (ValueError, TypeError):
+        return False
+
+def formatear_capitalizacion(s: str) -> str:
+    """
+    Estandariza una cadena poniendo en mayúscula la primera letra de cada palabra
+    y el resto en minúsculas (útil para nombres o títulos).
+    
+    Argumentos:
+        s (str): La cadena original.
+    Retorna:
+        str: La cadena formateada.
+    """
+    try:
+        return s.strip().title()
+    except (ValueError, TypeError, AttributeError):
+        return ""
